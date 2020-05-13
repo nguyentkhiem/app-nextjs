@@ -1,0 +1,7 @@
+.idea
+.next
+coverage
+node_modules
+.DS_Store
+.vscode
+package-log.json
