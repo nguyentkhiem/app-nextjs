@@ -1,13 +1,13 @@
 import React from 'react'
 import Layout from 'layouts/Main'
-import {connect} from 'react-redux';
+import {connect} from 'react-redux'
 import { getPosts } from 'api/posts'
 import Post from 'components/Post'
-import { getDsPost } from '../redux/actions/action';
+import { getDsPost } from '../redux/actions/action'
 
 class IndexPage extends React.Component {
-  constructor(props) {
-    super(props);
+  constructor (props) {
+    super(props)
   }
 
   static getInitialProps = async ({ store }) => {
@@ -16,23 +16,23 @@ class IndexPage extends React.Component {
     return { posts: json }
   }
 
-  render() {
+  render () {
     return (
       <Layout>
         <ul>
           {this.props.listPost.map(p => <Post key={p.title} post={p} />)}
         </ul>
       </Layout>
-    );
+    )
   }
 };
 
 const mapStateToProps = state => ({
   listPost: state
-});
+})
 
 const mapDispatchToProps = {
   getDsPost: getDsPost
-};
+}
 
-export default connect(mapStateToProps, mapDispatchToProps)(IndexPage);
+export default connect(mapStateToProps, mapDispatchToProps)(IndexPage)

@@ -1,9 +1,8 @@
-//Action Types
-export const DS_POST = "DS_POST";
+// Action Types
+export const DS_POST = 'DS_POST'
 
-
-//Action Creator
+// Action Creator
 
 export const getDsPost = () => ({
-    type: DS_POST,
-});
+  type: DS_POST
+})
