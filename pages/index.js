@@ -4,23 +4,24 @@ import {connect} from 'react-redux'
 import { getPosts } from 'api/posts'
 import Post from 'components/Post'
 import { getDsPost } from '../redux/actions/action'
+import { compose } from "redux";
 
-class IndexPage extends React.Component {
-  constructor (props) {
-    super(props)
-  }
-
+class App extends React.Component {
   static getInitialProps = async ({ store }) => {
     const res = await getPosts()
     const json = await res.json()
     return { posts: json }
   }
 
+  constructor (props) {
+    super(props)
+  }
+
   render () {
     return (
       <Layout>
         <ul>
-          {this.props.listPost.map(p => <Post key={p.title} post={p} />)}
+          {posts.map(p => <Post key={p.title} post={p} />)}
         </ul>
       </Layout>
     )
@@ -28,11 +29,17 @@ class IndexPage extends React.Component {
 };
 
 const mapStateToProps = state => ({
-  listPost: state
-})
+  listPost: state.dsPost
+});
 
 const mapDispatchToProps = {
-  getDsPost: getDsPost
-}
+  getDsPost
+};
 
-export default connect(mapStateToProps, mapDispatchToProps)(IndexPage)
+const withConnect = connect(
+  mapStateToProps,
+  mapDispatchToProps
+);
+
+
+export default compose(withConnect)(App);

@@ -8,9 +8,11 @@ const reducer = (state = initialState, action) => {
   return produce(state, draft => {
     switch (action.type) {
       case DS_POST:
-        return {...state}
+        draft.dsPost = action.payload
+        return {...action.payload}
       default:
-        return {...state}
+        draft.dsPost = action.payload
+        return {...action.payload}
     }
   })
 }
